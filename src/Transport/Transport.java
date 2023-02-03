@@ -2,14 +2,17 @@ package Transport;
 
 import Drivers.Driver;
 import Drivers.NoDriverLicenseException;
+import Mechanic.Mechanics;
+
+import java.util.ArrayList;
 
 public abstract class Transport<T extends Driver> implements Racing {
 
     private final String brand;
     private final String model;
     private double engineVolume;
-
     private T driver;
+    private final ArrayList<Mechanics> mechanics = new ArrayList<>();
     private final String DEFAULT_VALUE = "default";
     private final double DEFAULT_ENGINE_VOLUME = 0.1;
 
@@ -29,37 +32,10 @@ public abstract class Transport<T extends Driver> implements Racing {
         this.driver = driver;
     }
 
-    public String getBrand() {
-        return brand;
+    public void addMechanic(Mechanics mechanics) {
+        getMechanics().add(mechanics);
     }
 
-    public String getModel() {
-        return model;
-    }
-
-    public double getEngineVolume() {
-        return engineVolume;
-    }
-
-    public String getDEFAULT_VALUE() {
-        return DEFAULT_VALUE;
-    }
-
-    public void setEngineVolume(double engineVolume) {
-        this.engineVolume = engineVolume;
-        if (Double.compare(this.engineVolume,0)==0) {
-            this.engineVolume = DEFAULT_ENGINE_VOLUME;
-        }
-
-    }
-
-    public T getDriver() {
-        return driver;
-    }
-
-    public void setDriver(T driver) {
-        this.driver = driver;
-    }
 
     abstract void printType();
 
@@ -95,6 +71,37 @@ public abstract class Transport<T extends Driver> implements Racing {
     @Override
     public void getMaxSpeed(Transport transport) {
 
+    }
+    public T getDriver() {
+        return driver;
+    }
+
+    public void setDriver(T driver) {
+        this.driver = driver;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public double getEngineVolume() {
+        return engineVolume;
+    }
+
+    public void setEngineVolume(double engineVolume) {
+        this.engineVolume = engineVolume;
+        if (Double.compare(this.engineVolume,0)==0) {
+            this.engineVolume = DEFAULT_ENGINE_VOLUME;
+        }
+
+    }
+
+    public ArrayList<Mechanics> getMechanics() {
+        return mechanics;
     }
 }
 
