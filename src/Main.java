@@ -4,7 +4,11 @@ import Drivers.DriverD;
 import Drivers.NoDriverLicenseException;
 import Transport.Bus;
 import Transport.Car;
+import Transport.Transport;
 import Transport.Truck;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,26 +28,43 @@ public class Main {
         Truck truck3 = new Truck("Truck brand 3", "Truck model 3", 3.0, new DriverC("DriverC3", true, 7), null);
         Truck truck4 = new Truck("Truck brand 4", "Truck model 4", 4.0, new DriverC("DriverC4", true, 7), null);
 
-        car2.getPitStop(car2);
-        bus1.getBestTimeLap(bus1);
-        truck3.getMaxSpeed(truck3);
+        List<Transport> allracingCars = new ArrayList<>();
 
-        car2.printInfo();
-        bus1.printInfo();
+        allracingCars.add(car1);
+        allracingCars.add(car2);
+        allracingCars.add(car3);
+        allracingCars.add(car4);
+        allracingCars.add(bus1);
+        allracingCars.add(bus2);
+        allracingCars.add(bus3);
+        allracingCars.add(bus4);
+        allracingCars.add(truck1);
+        allracingCars.add(truck2);
+        allracingCars.add(truck3);
+        allracingCars.add(truck4);
 
-        System.out.println(Car.BodyType.COUPE);
-        System.out.println(Truck.Tonnage.N1);
-        System.out.println(Bus.Capacity.AVERAGE);
 
-        car2.printType();
-        bus1.printType();
-        truck3.printType();
 
-        try {
-            System.out.println(car1.doDiagnostic());
-        } catch (NoDriverLicenseException e) {
-            e.printStackTrace();
-        }
+//        car2.getPitStop(car2);
+//        bus1.getBestTimeLap(bus1);
+//        truck3.getMaxSpeed(truck3);
+//
+//        car2.printInfo();
+//        bus1.printInfo();
+//
+//        System.out.println(Car.BodyType.COUPE);
+//        System.out.println(Truck.Tonnage.N1);
+//        System.out.println(Bus.Capacity.AVERAGE);
+//
+//        car2.printType();
+//        bus1.printType();
+//        truck3.printType();
+//
+//        try {
+//            System.out.println(car1.doDiagnostic());
+//        } catch (NoDriverLicenseException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }
