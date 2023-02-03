@@ -60,18 +60,19 @@ public class Main {
 
         mech1.doService();
 
-        for (Transport<?> transport : allracingCars) {
-            System.out.println(transport + " " + transport.getModel() + " " + transport.getDriver() + transport.getMechanics());
-        }
+//        for (Transport<?> transport : allracingCars) {
+//            System.out.println(transport + " " + transport.getModel() + " " + transport.getDriver() + transport.getMechanics());
+//        }
 
         ServiceStation serviceStation = new ServiceStation();
         serviceStation.addTransport(car1);
         serviceStation.addTransport(bus1);
         serviceStation.addTransport(truck1);
 
-        serviceStation.runService();
-        serviceStation.runService();
-        serviceStation.runService();
+
+        serviceStation.runService(mech1);
+        serviceStation.runService(mech2);
+       serviceStation.runService(mech3);
 
 
 //        car2.getPitStop(car2);

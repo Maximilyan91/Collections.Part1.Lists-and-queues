@@ -3,32 +3,28 @@ package Mechanic;
 import Transport.Transport;
 import Transport.Bus;
 
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.Queue;
 
-public class ServiceStation {
+public class ServiceStation<T extends Transport> {
 
-    private final Queue<Transport<?>> transportQueue = new ArrayDeque<Transport<?>>();
+    private  Queue<T> transportQueue = new LinkedList<>();
 
-    public void addTransport(Transport<?> transport) {
+    public void addTransport(T transport) {
         if (transport instanceof Bus) {
             System.out.println(" Автобусы не нуждаются в ТО");
         } else {
-            transportQueue.add(transport);
+            transportQueue.offer(transport);
         }
     }
 
-    public void runService() {
-        Transport transport = transportQueue.poll();
+    public void runService(Mechanics mechanics) {
+        T transport = transportQueue.poll();
         if (transport != null) {
-            try {
-                transport.getMechanics().get(0);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
+           mechanics.doService();
+        } else {
+            System.out.println("авто в очереди нет");
         }
-
     }
 
 
